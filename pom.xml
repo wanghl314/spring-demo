@@ -17,14 +17,18 @@
     <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
     <!-- junit/junit -->
     <junit.version>4.13.2</junit.version>
-    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-    <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
+    <!-- org/apache/maven/plugins/maven-compiler-plugin -->
+    <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+    <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
+    <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+    <!-- org/apache/maven/plugins/maven-source-plugin -->
     <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+    <!-- org/apache/maven/plugins/maven-war-plugin -->
     <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-    <spring.version>6.0.5</spring.version>
+    <spring.version>6.0.6</spring.version>
   </properties>
 
   <repositories>
