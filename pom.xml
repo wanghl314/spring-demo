@@ -29,7 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-        <spring.version>6.0.7</spring.version>
+        <spring.version>6.0.8</spring.version>
     </properties>
 
     <repositories>
