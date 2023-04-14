@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -74,13 +73,9 @@ public class FileController {
                 IOUtils.copyLarge(is, os);
                 os.flush();
             }
-        } else {
-            response.setHeader("Content-Type", MediaType.TEXT_PLAIN_VALUE);
-            try (PrintWriter writer = response.getWriter()) {
-                writer.write("文件不存在：" + name);
-                writer.flush();
-            }
+            return;
         }
+        request.getRequestDispatcher("/404").forward(request, response);
     }
 
     private FileInfo build(File file) {
