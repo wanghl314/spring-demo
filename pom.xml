@@ -10,9 +10,9 @@
 
     <properties>
         <!-- commons-io/commons-io -->
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.12.0</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
-        <jackson.version>2.15.0</jackson.version>
+        <jackson.version>2.15.1</jackson.version>
         <java.version>17</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
@@ -29,7 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-        <spring.version>6.0.8</spring.version>
+        <spring.version>6.0.9</spring.version>
     </properties>
 
     <repositories>
