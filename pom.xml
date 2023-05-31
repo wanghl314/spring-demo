@@ -16,18 +16,16 @@
         <java.version>17</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
-        <!-- junit/junit -->
-        <junit.version>4.13.2</junit.version>
+        <!-- org/junit/jupiter/junit-jupiter -->
+        <junit.version>5.9.3</junit.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
         <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <!-- org/apache/maven/plugins/maven-war-plugin -->
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.0.9</spring.version>
     </properties>
@@ -73,8 +71,8 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -105,8 +103,8 @@
             <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
