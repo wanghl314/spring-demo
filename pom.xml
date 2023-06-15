@@ -26,6 +26,8 @@
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <!-- org/apache/maven/plugins/maven-war-plugin -->
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <!-- org/apache/tomcat/embed/tomcat-embed-core -->
+        <tomcat.version>10.1.10</tomcat.version>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.0.9</spring.version>
     </properties>
@@ -71,6 +73,18 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-jasper</artifactId>
+                <version>${tomcat.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit.version}</version>
@@ -101,6 +115,14 @@
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
