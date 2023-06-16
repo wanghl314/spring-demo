@@ -2,14 +2,17 @@ package com.whl.spring.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,7 +67,7 @@ public class FileController {
         File file = new File(PATH + File.separator + name);
 
         if (file.exists()) {
-            response.setHeader("Content-Type", MediaType.APPLICATION_OCTET_STREAM_VALUE);
+            response.setHeader("Content-Type", this.getContentType(file));
             response.setHeader("Content-Disposition", "attachment; filename=" + name);
             response.setHeader("Content-Length", String.valueOf(file.length()));
             response.setHeader("Cache-Control", "public,max-age=604800");
@@ -80,6 +83,23 @@ public class FileController {
 
     private FileInfo build(File file) {
         return new FileInfo(file.getName(), file.length(), file.lastModified());
+    }
+
+    public String getContentType(File file) throws IOException {
+        String contentType = null;
+
+        if (file != null && file.exists()) {
+            URLConnection connection = file.toURI().toURL().openConnection();
+            contentType = connection.getContentType();
+
+            try {
+                MediaType mediaType = MediaType.parseMediaType(contentType);
+                contentType = mediaType.toString();
+            } catch (InvalidMediaTypeException e) {
+                contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+            }
+        }
+        return contentType;
     }
 
 }
