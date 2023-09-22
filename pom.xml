@@ -6,7 +6,7 @@
     <groupId>com.whl.spring</groupId>
     <artifactId>spring-demo</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <properties>
         <!-- commons-io/commons-io -->
@@ -26,10 +26,11 @@
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <!-- org/apache/maven/plugins/maven-war-plugin -->
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
-        <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>10.1.13</tomcat.version>
+        <revision>1.0-SNAPSHOT</revision>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.0.12</spring.version>
+        <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
+        <tomcat.version>10.1.13</tomcat.version>
     </properties>
 
     <repositories>
