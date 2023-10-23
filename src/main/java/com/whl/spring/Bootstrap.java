@@ -24,6 +24,20 @@ public class Bootstrap {
         Connector connector = new Connector();
         connector.setPort(PORT);
         connector.setURIEncoding(URI_ENCODING);
+
+//        ssl 配置
+//        SSLHostConfig config = new SSLHostConfig();
+//        SSLHostConfigCertificate certificate = new SSLHostConfigCertificate(config, SSLHostConfigCertificate.Type.RSA);
+//        certificate.setCertificateKeystorePassword("ebridge");
+//        certificate.setCertificateKeystoreFile("D:\\emp\\appsvr\\tomcat\\conf\\emp.ssl.jks");
+//        config.addCertificate(certificate);
+//
+//        Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
+//        protocol.setSSLEnabled(true);
+//        protocol.setSecure(true);
+//        protocol.addSslHostConfig(config);
+//        connector.setScheme("https");
+
         tomcat.getService().addConnector(connector);
 
         File docBase = new File(WEBAPP);
