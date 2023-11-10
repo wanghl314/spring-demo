@@ -1,19 +1,18 @@
 package com.whl.spring.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.springframework.http.InvalidMediaTypeException;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
+import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,15 +29,14 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/file")
 public class FileController {
-    private static final String FILE_STORE_DIRECTORY = ".." + File.separator + "upload";
 
     @GetMapping("/list")
     public List<FileInfo> list(HttpServletRequest request) throws Exception {
-        final String PATH = request.getServletContext().getRealPath("") + FILE_STORE_DIRECTORY;
-        File[] files = new File(PATH).listFiles();
+        Path path = this.getFileStorePath();
+        File[] files = new File(path.toString()).listFiles();
         List<FileInfo> datas = new ArrayList<FileInfo>();
 
-        if (files != null && files.length > 0) {
+        if (files != null) {
             for (File file : files) {
                 datas.add(this.build(file));
             }
@@ -48,32 +46,36 @@ public class FileController {
 
     @PostMapping("/upload")
     public FileInfo upload(HttpServletRequest request, @RequestParam(value = "file") MultipartFile file) throws Exception {
-        final String PATH = request.getServletContext().getRealPath("") + FILE_STORE_DIRECTORY;
         String filename = file.getOriginalFilename();
         String suffix = "";
 
-        if (filename.contains(".")) {
+        if (filename != null && filename.contains(".")) {
             suffix = filename.substring(filename.lastIndexOf("."));
         }
-        String storeFileName = UUID.randomUUID().toString() + suffix;
-        File destination = new File(PATH + File.separator + storeFileName);
-        FileUtils.copyInputStreamToFile(file.getInputStream(), destination);
-        return this.build(destination);
+        Path path = this.getFileStorePath();
+        Path destination = path.resolve(UUID.randomUUID() + suffix);
+
+        if (!Files.exists(destination.getParent())) {
+            Files.createDirectories(destination.getParent());
+        }
+        Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
+        return this.build(destination.toFile());
     }
 
     @GetMapping("/download/{name}")
     public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String name) throws Exception {
-        final String PATH = request.getServletContext().getRealPath("") + FILE_STORE_DIRECTORY;
-        File file = new File(PATH + File.separator + name);
+        Path path = this.getFileStorePath();
+        Path destination = path.resolve(name);
 
-        if (file.exists()) {
+        if (Files.exists(destination)) {
+            File file = destination.toFile();
             response.setHeader("Content-Type", this.getContentType(file));
             response.setHeader("Content-Disposition", "attachment; filename=" + name);
             response.setHeader("Content-Length", String.valueOf(file.length()));
             response.setHeader("Cache-Control", "public,max-age=604800");
-            try (InputStream is = new FileInputStream(file);
-                 OutputStream os = response.getOutputStream()) {
-                IOUtils.copyLarge(is, os);
+
+            try (OutputStream os = response.getOutputStream()) {
+                Files.copy(destination, os);
                 os.flush();
             }
             return;
@@ -85,21 +87,21 @@ public class FileController {
         return new FileInfo(file.getName(), file.length(), file.lastModified());
     }
 
-    public String getContentType(File file) throws IOException {
-        String contentType = null;
+    public String getContentType(File file) {
+        String contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
 
         if (file != null && file.exists()) {
-            URLConnection connection = file.toURI().toURL().openConnection();
-            contentType = connection.getContentType();
-
             try {
-                MediaType mediaType = MediaType.parseMediaType(contentType);
+                MediaType mediaType = MediaTypeFactory.getMediaType(new FileSystemResource(file)).orElse(MediaType.APPLICATION_OCTET_STREAM);
                 contentType = mediaType.toString();
-            } catch (InvalidMediaTypeException e) {
-                contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+            } catch (Exception ignored) {
             }
         }
         return contentType;
+    }
+
+    private Path getFileStorePath() {
+        return Paths.get(System.getProperty("user.dir"), "upload");
     }
 
 }
