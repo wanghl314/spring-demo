@@ -28,7 +28,7 @@
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-        <spring.version>6.1.0</spring.version>
+        <spring.version>6.1.1</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
         <tomcat.version>10.1.16</tomcat.version>
     </properties>
