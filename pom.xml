@@ -12,7 +12,7 @@
         <!-- commons-io/commons-io -->
         <commons-io.version>2.15.1</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.17.0</jackson.version>
         <java.version>17</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
@@ -28,7 +28,7 @@
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-        <spring.version>6.1.4</spring.version>
+        <spring.version>6.1.5</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
         <tomcat.version>10.1.19</tomcat.version>
     </properties>
