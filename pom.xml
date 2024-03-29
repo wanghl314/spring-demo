@@ -19,7 +19,7 @@
         <!-- org/junit/jupiter/junit-jupiter -->
         <junit.version>5.10.2</junit.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
@@ -30,7 +30,7 @@
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.1.5</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>10.1.19</tomcat.version>
+        <tomcat.version>10.1.20</tomcat.version>
     </properties>
 
     <repositories>
