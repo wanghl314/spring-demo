@@ -12,7 +12,7 @@
         <!-- commons-io/commons-io -->
         <commons-io.version>2.16.1</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
-        <jackson.version>2.17.0</jackson.version>
+        <jackson.version>2.17.1</jackson.version>
         <java.version>17</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
@@ -21,16 +21,16 @@
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
-        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <!-- org/apache/maven/plugins/maven-war-plugin -->
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-        <spring.version>6.1.6</spring.version>
+        <spring.version>6.1.8</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>10.1.23</tomcat.version>
+        <tomcat.version>10.1.24</tomcat.version>
     </properties>
 
     <repositories>
