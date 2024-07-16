@@ -18,8 +18,12 @@
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
         <!-- org/junit/jupiter/junit-jupiter -->
         <junit.version>5.10.3</junit.version>
+        <!-- org/apache/maven/plugins/maven-antrun-plugin -->
+        <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <!-- org/apache/maven/plugins/maven-dependency-plugin -->
+        <maven-dependency-plugin.version>3.7.1</maven-dependency-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
         <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
@@ -144,12 +148,50 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                            <configuration>
+                                <target>
+                                    <delete dir="${project.basedir}/libs" />
+                                </target>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <parameters>true</parameters>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <outputDirectory>${project.basedir}/libs</outputDirectory>
+                        <stripVersion>true</stripVersion>
+                        <includeScope>compile</includeScope>
+                        <includeScope>runtime</includeScope>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -191,7 +233,15 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
