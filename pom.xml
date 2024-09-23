@@ -10,7 +10,7 @@
 
     <properties>
         <!-- commons-io/commons-io -->
-        <commons-io.version>2.16.1</commons-io.version>
+        <commons-io.version>2.17.0</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
         <jackson.version>2.17.2</jackson.version>
         <java.version>17</java.version>
@@ -34,7 +34,7 @@
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.1.13</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>10.1.29</tomcat.version>
+        <tomcat.version>10.1.30</tomcat.version>
     </properties>
 
     <repositories>
