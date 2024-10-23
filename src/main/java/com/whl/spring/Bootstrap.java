@@ -1,10 +1,12 @@
 package com.whl.spring;
 
+import org.apache.catalina.Executor;
+import org.apache.catalina.connector.Connector;
+import org.apache.catalina.core.StandardVirtualThreadExecutor;
+import org.apache.catalina.startup.Tomcat;
+
 import java.io.File;
 import java.io.IOException;
-
-import org.apache.catalina.connector.Connector;
-import org.apache.catalina.startup.Tomcat;
 
 public class Bootstrap {
     private static final int PORT = 8080;
@@ -21,9 +23,12 @@ public class Bootstrap {
         File baseDir = createTempDir("tomcat");
         tomcat.setBaseDir(baseDir.getAbsolutePath());
 
+        Executor executor = new StandardVirtualThreadExecutor();
+
         Connector connector = new Connector();
         connector.setPort(PORT);
         connector.setURIEncoding(URI_ENCODING);
+        connector.getProtocolHandler().setExecutor(executor);
 
 //        ssl 配置
 //        SSLHostConfig config = new SSLHostConfig();
@@ -39,6 +44,7 @@ public class Bootstrap {
 //        connector.setScheme("https");
 
         tomcat.getService().addConnector(connector);
+        tomcat.getService().addExecutor(executor);
 
         File docBase = new File(WEBAPP);
         tomcat.addWebapp(CONTEXT_PATH, docBase.getAbsolutePath());

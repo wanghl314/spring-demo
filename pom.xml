@@ -13,7 +13,7 @@
         <commons-io.version>2.17.0</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
         <jackson.version>2.18.0</jackson.version>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
         <!-- org/junit/jupiter/junit-jupiter -->
