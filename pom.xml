@@ -10,31 +10,31 @@
 
     <properties>
         <!-- commons-io/commons-io -->
-        <commons-io.version>2.17.0</commons-io.version>
+        <commons-io.version>2.18.0</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
-        <jackson.version>2.18.0</jackson.version>
+        <jackson.version>2.18.1</jackson.version>
         <java.version>21</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
         <!-- org/junit/jupiter/junit-jupiter -->
-        <junit.version>5.11.2</junit.version>
+        <junit.version>5.11.3</junit.version>
         <!-- org/apache/maven/plugins/maven-antrun-plugin -->
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-dependency-plugin -->
-        <maven-dependency-plugin.version>3.8.0</maven-dependency-plugin.version>
+        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
-        <maven-javadoc-plugin.version>3.10.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.11.1</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <!-- org/apache/maven/plugins/maven-war-plugin -->
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
-        <spring.version>6.1.14</spring.version>
+        <spring.version>6.2.0</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>11.0.0</tomcat.version>
+        <tomcat.version>11.0.1</tomcat.version>
     </properties>
 
     <repositories>
