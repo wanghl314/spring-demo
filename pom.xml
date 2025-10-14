@@ -17,15 +17,15 @@
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
         <!-- org/junit/jupiter/junit-jupiter -->
-        <junit.version>5.13.4</junit.version>
+        <junit.version>5.14.0</junit.version>
         <!-- org/apache/maven/plugins/maven-antrun-plugin -->
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
-        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-dependency-plugin -->
         <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
-        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <!-- org/apache/maven/plugins/maven-war-plugin -->
@@ -34,7 +34,7 @@
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.2.11</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>11.0.11</tomcat.version>
+        <tomcat.version>11.0.12</tomcat.version>
     </properties>
 
     <repositories>
