@@ -12,12 +12,12 @@
         <!-- commons-io/commons-io -->
         <commons-io.version>2.20.0</commons-io.version>
         <!-- com/fasterxml/jackson/core/jackson-databind -->
-        <jackson.version>2.20.0</jackson.version>
+        <jackson.version>2.20.1</jackson.version>
         <java.version>21</java.version>
         <!-- jakarta/servlet/jakarta.servlet-api -->
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
         <!-- org/junit/jupiter/junit-jupiter -->
-        <junit.version>5.14.0</junit.version>
+        <junit.version>5.14.1</junit.version>
         <!-- org/apache/maven/plugins/maven-antrun-plugin -->
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
@@ -34,7 +34,7 @@
         <!-- org/springframework/spring-web、org/springframework/spring-webmvc -->
         <spring.version>6.2.11</spring.version>
         <!-- org/apache/tomcat/embed/tomcat-embed-core、org/apache/tomcat/embed/tomcat-embed-jasper -->
-        <tomcat.version>11.0.12</tomcat.version>
+        <tomcat.version>11.0.13</tomcat.version>
     </properties>
 
     <repositories>
