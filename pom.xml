@@ -10,7 +10,7 @@
 
     <properties>
         <!-- commons-io/commons-io -->
-        <commons-io.version>2.21.0</commons-io.version>
+        <commons-io.version>2.22.0</commons-io.version>
         <!-- tools/jackson/jackson-bom -->
         <jackson.version>3.1.2</jackson.version>
         <java.version>21</java.version>
