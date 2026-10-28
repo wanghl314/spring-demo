@@ -9,8 +9,10 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- 扫描器 -->
     <context:component-scan base-package="com.whl.spring.controller" />
-    <!-- springmvc转json配置 -->
-    <mvc:annotation-driven />
+    <!-- 注意：这里不再使用 <mvc:annotation-driven/>。
+         Spring 7 的 API Versioning 只能通过 @EnableWebMvc + WebMvcConfigurer 启用，
+         XML 命名空间不会回调 WebMvcConfigurer；两者同时存在还会重复注册 RequestMappingHandlerMapping。
+         MVC 基础设施现由 com.whl.spring.config.WebConfig 上的 @EnableWebMvc 提供。 -->
     <!-- 处理静态文件 -->
     <mvc:resources mapping="/scripts/**" location="/scripts/" />
     <mvc:resources mapping="/styles/**" location="/styles/" />
