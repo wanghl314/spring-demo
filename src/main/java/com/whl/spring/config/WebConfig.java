@@ -35,30 +35,34 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     /**
-     * 通过请求头 X-API-Version 解析接口版本，例如：
+     * 通过 URL 路径段解析接口版本，例如：
      * <pre>
-     *   X-API-Version: 1    -> VersionController#getUserV1
-     *   X-API-Version: 1.2  -> VersionController#getUserV1_1Plus（基线 1.1+）
-     *   X-API-Version: 2    -> VersionController#getUserV2
+     *   /api/v1/user    -> VersionController#getUserV1
+     *   /api/v1.2/user  -> VersionController#getUserV1_1Plus（基线 1.1+）
+     *   /api/v2/user    -> VersionController#getUserV2
      * </pre>
      *
-     * <p>说明：
-     * <ul>
-     *   <li>{@code setVersionRequired(false)} 很重要：API versioning 一旦启用，默认版本是“全局必填”的，
-     *       连 /demo、/ 这些未版本化的接口也会因为缺少 X-API-Version 而 400；设为 false 后
-     *       未带版本的请求不再报错；</li>
-     *   <li>{@code setDefaultVersion("1")}：未带 X-API-Version 时按版本 1 处理（/api/user 默认命中 v1）；</li>
-     *   <li>“支持的版本”默认从 mapping 中的 version 属性收集，但基线 "1.1+" 只会登记 1.1，
-     *       所以 1.2 / 1.3 需要显式加入，否则会被判为 400（InvalidApiVersionException）；</li>
-     *   <li>如果改用路径段版本（如 /api/user/{version}），把 useRequestHeader 换成
-     *       {@code usePathSegment(2)}，并让 mapping 路径包含 {version} 即可。</li>
-     * </ul>
+     * <p>两个关键点（缺一个就会出现 400）：
+     * <ol>
+     *   <li><b>受支持版本列表</b>：默认只把 mapping 里出现过的版本当作受支持版本，
+     *       而基线 {@code version = "1.1+"} 只会登记 1.1，{@code "1"} 和 {@code "2"} 各登记 1.0 / 2.0，
+     *       所以 /api/v1.2/user、/api/v1.3/user 会被判为 {@code InvalidApiVersionException} → 400。
+     *       这里用 {@code addSupportedVersions(...)} 显式声明 1.2 / 1.3；</li>
+     *   <li><b>路径谓词</b>：{@code usePathSegment(index)} 不带谓词时会把<b>所有</b>请求路径都当作“版本化路径”，
+     *       于是 /spring/、/spring/demo/test 这类非版本化 URL 会把第 2 段（如 "test"）当版本解析 → 400。
+     *       加上 {@code path -> path.pathWithinApplication().value().startsWith("/api/")} 后，
+     *       只有 /api/** 才解析版本，其他接口恢复正常。</li>
+     * </ol>
+     *
+     * <p>另外，版本段里的 "v" 前缀不影响解析：{@code SemanticApiVersionParser} 会跳过开头的非数字字符，
+     * 所以 "v1.2" 等价于 "1.2"。
      */
     @Override
     public void configureApiVersioning(ApiVersionConfigurer configurer) {
-        configurer.usePathSegment(1)
+        configurer.usePathSegment(1, path -> path.pathWithinApplication().value().startsWith("/api/"))
                 .setVersionRequired(false)
-                .setDefaultVersion("1");
+                .setDefaultVersion("1")
+                .addSupportedVersions("1", "1.1", "1.2", "1.3", "2");
     }
 
 }
